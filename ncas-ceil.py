@@ -16,7 +16,7 @@ class aws(AProduct):
         from cis.data_io.ungridded_data import UngriddedCoordinates
         from cis.exceptions import InvalidVariableError
 
-        variables = [("longitude", "x"), ("latitude", "y"), ("altitude", "z"), ("time", "t") ]
+        variables = [("longitude", "x"), ("latitude", "y"), ("altitude", "z"), ("time", "t") ("aerosol_backscatter_coefficient", "m-1 sr-1" ]
 
         logging.info("Listing coordinates: " + str(variables))
 
