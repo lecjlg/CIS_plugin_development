@@ -1,5 +1,7 @@
 #! /usr/bin/python2.7
 # vim: tabstop=4 expandtab
+"""This is a custom plugin for CIS to plot the Campbell Ceilometer"""
+
 import logging
 from cis.data_io.products.AProduct import AProduct
 from cis.data_io.netcdf import read_many_files_individually, get_metadata
@@ -7,14 +9,14 @@ from cis.data_io.netcdf import read_many_files_individually, get_metadata
 class aws(AProduct):
 
     def get_file_signature(self):
-        return [r'aws*\.nc']
+        return [r'ncas-ceil*\.nc']
 
     def create_coords(self, filenames, usr_variable=None):
         from cis.data_io.Coord import Coord, CoordList
         from cis.data_io.ungridded_data import UngriddedCoordinates
         from cis.exceptions import InvalidVariableError
 
-        variables = [("longitude", "x"), ("latitude", "y"), ("altitude", "z"), ("time", "t"), ("relative_humidity", "RH"), ("surface_air_pressure" , "Pa") , ("air_temprature" , "K") , ("wind_speed") , ("Wind Diretion") ("rainfall_rate") :wq]
+        variables = [("longitude", "x"), ("latitude", "y"), ("altitude", "z"), ("time", "t") ]
 
         logging.info("Listing coordinates: " + str(variables))
 
