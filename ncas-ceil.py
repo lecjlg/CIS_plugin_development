@@ -6,21 +6,22 @@ import logging
 from cis.data_io.products.AProduct import AProduct
 from cis.data_io.netcdf import read_many_files_individually, get_metadata
 
-class aws(AProduct):
+class ceilometer(AProduct):
 
     def get_file_signature(self):
-        return [r'ncas-ceil*\.nc']
+        return [r'\.nc']
 
     def create_coords(self, filenames, usr_variable=None):
         from cis.data_io.Coord import Coord, CoordList
         from cis.data_io.ungridded_data import UngriddedCoordinates
         from cis.exceptions import InvalidVariableError
 
-        variables = [("longitude", "x"), ("latitude", "y"), ("altitude", "z"), ("time", "t") ("aerosol_backscatter_coefficient", "m-1 sr-1" ]
+        variables = [("longitude", "x"), ("latitude", "y"), ("altitude", "z"), ("time", "t"), ("aerosol_backscatter_coefficient", "m-1 sr-1") ]
 
         logging.info("Listing coordinates: " + str(variables))
 
         coords = CoordList()
+
         for variable in variables:
              try:
                  var_data = read_many_files_individually(filenames,variable[0])[variable[0]]
